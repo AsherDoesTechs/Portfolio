@@ -19,20 +19,3 @@ if (form) {
     form.reset();
   });
 }
-
-// Dark mode toggle
-const toggle = document.getElementById("darkModeToggle");
-const body = document.body;
-
-// Apply saved theme on load
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark");
-}
-
-// Toggle dark mode
-toggle?.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  const current = body.classList.contains("dark") ? "dark" : "light";
-  localStorage.setItem("theme", current);
-  toggle.innerText = current === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
-});
