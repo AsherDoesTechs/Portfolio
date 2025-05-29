@@ -13,15 +13,17 @@
   <!-- Font Awesome for icons (optional) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
   <!-- Custom Styles -->
 </head>
+<div id="tsparticles" class="fixed top-0 left-0 w-full h-full -z-10"></div>
 <body class="px-4 py-6">
 
   <div class="container mx-auto grid lg:grid-cols-2 gap-6">
 
     <!-- Left Column (Profile Info) -->
     <div class="flex flex-col items-center text-center lg:text-left">
-      <img src="./img/Asher_Basco.jpg" alt="Asher Basco" class="rounded-xl w-48 h-49 object-cover mb-4 shadow-lg">
+      <img src="./img/Asher_Basco.jpg" alt="Asher Basco" class="rounded-xl w-64 h-80 object-cover mb-4 shadow-lg">
       <p class="text-sm text-gray-400 mb-1"><i class="fas fa-map-marker-alt"></i> Laurel, Batangas City</p>
       <p class="text-sm text-gray-400 mb-4"><i class="fas fa-laptop-code"></i> I'm a Tech Enthusiast.</p>
 
@@ -34,9 +36,9 @@
     </div>
 
     <!-- Right Column (Intro and Projects) -->
-    <div id="home">
+    <section id="home" class="min-h-screen flex flex-col">
       <!-- Navigation Buttons -->
-      <nav class="mb-4 flex flex-wrap gap-2" id="navbar">
+      <nav class="mb-4 flex flex-wrap gap-2 py-2 z-50 bg-[#1a1a1a]" id="navbar">
         <a href="#home" class="nav-btn active">HOME</a>
         <a href="#about" class="nav-btn">ABOUT</a>
         <a href="#techstack" class="nav-btn">TECHSTACK</a>
@@ -75,8 +77,9 @@
 
       <!-- Footer -->
       <p class="mt-8 text-sm text-gray-500">© 2025 Asher Basco. All rights reserved.</p>
-    </div>
+    </section>
   </div>
+  
 
   <!-- ABOUT Section -->
   <section id="about" class="mt-20 text-white">
@@ -160,38 +163,8 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section, #home");
-    const navLinks = document.querySelectorAll(".nav-btn");
-
-    // Highlight clicked nav link immediately
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
-
-    // Highlight based on scroll position
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${entry.target.id}`) {
-              link.classList.add("active");
-            }
-          });
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
-
-    sections.forEach(section => observer.observe(section));
-  });
-</script>
+  <!-- tsParticle Animated Background -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
 
 </body>
 </html>
