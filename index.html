@@ -27,11 +27,12 @@
     <div class="relative flex flex-col items-center text-center lg:text-left">
   <!-- Logo in Top Left -->
  <img 
-    src="./img/Logo.png" 
-    alt="Logo" 
-    class="absolute top-0 left-0 w-36 h-36 cursor-pointer py-0 pb-2"
-    onclick="location.reload()"
-  >
+  src="./img/Logo.png" 
+  alt="Logo" 
+  class="absolute top-0 left-0 w-24 h-37 cursor-pointer z-50"
+  onclick="location.reload()"
+/>
+
 
   <!-- Main Profile Image -->
   <img src="./img/Asher_Basco.jpg" alt="Asher Basco" class="rounded-xl w-64 h-80 object-cover mb-4 shadow-lg mt-12">
@@ -68,13 +69,13 @@
 
   <!-- Download CV Button -->
   <a 
-    href="./files/Asher_Basco_CV.pdf" 
-    download 
-    class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition text-sm"
-  >
-    <i class="fas fa-download mr-1"></i> Download CV
-  </a>
-</nav>
+  href="./files/Asher_Basco_CV.pd" 
+  download 
+  class="relative px-4 py-2 text-green-400 font-semibold rounded-md border-2 border-green-400 transition duration-300 ease-in-out hover:bg-green-500 hover:text-white group"
+>
+  <span class="absolute inset-0 rounded-md border-2 border-green-400 opacity-25 group-hover:opacity-0 transition duration-300 pointer-events-none"></span>
+  <i class="fas fa-download mr-1"></i> Download CV
+</a>
 
 
       
