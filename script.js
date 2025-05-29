@@ -53,3 +53,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach((section) => observer.observe(section));
 });
+document.addEventListener("DOMContentLoaded", () => {
+  tsParticles.load("tsparticles", {
+    fullScreen: {
+      enable: false,
+    },
+    background: {
+      color: {
+        value: "#000", // or your preferred background color
+      },
+    },
+    particles: {
+      number: {
+        value: 100,
+        density: {
+          enable: true,
+          area: 800,
+        },
+      },
+      color: {
+        value: "#ffffff",
+      },
+      shape: {
+        type: "circle",
+      },
+      opacity: {
+        value: 0.5,
+        random: true,
+      },
+      size: {
+        value: 3,
+        random: true,
+      },
+      move: {
+        enable: true,
+        speed: 1,
+      },
+    },
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "repulse",
+        },
+      },
+      modes: {
+        repulse: {
+          distance: 100,
+        },
+      },
+    },
+    detectRetina: true,
+  });
+});
