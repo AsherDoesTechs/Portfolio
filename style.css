@@ -45,3 +45,23 @@
       height: 100%;
       z-index: -10;
     }
+      @keyframes riseUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-rise-up {
+    animation: riseUp 1.4s ease-out forwards;
+  }
+
+  .animate-delay-1 { animation-delay: 0.3s; }
+  .animate-delay-2 { animation-delay: 0.6s; }
+  .animate-delay-3 { animation-delay: 0.9s; }
+  .animate-delay-4 { animation-delay: 1.2s; }
+  .animate-delay-5 { animation-delay: 1.5s; }
