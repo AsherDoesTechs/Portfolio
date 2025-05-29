@@ -48,7 +48,7 @@
       @keyframes riseUp {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(50px);
     }
     100% {
       opacity: 1;
@@ -65,3 +65,5 @@
   .animate-delay-3 { animation-delay: 0.9s; }
   .animate-delay-4 { animation-delay: 1.2s; }
   .animate-delay-5 { animation-delay: 1.5s; }
+
+  
