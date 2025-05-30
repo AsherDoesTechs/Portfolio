@@ -112,3 +112,11 @@ if ("scrollRestoration" in history) {
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
+
+fetch("http://localhost:5000/api/contact", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name, email, message }),
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data));
