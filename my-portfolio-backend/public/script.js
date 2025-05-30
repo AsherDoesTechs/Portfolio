@@ -10,16 +10,6 @@ document.querySelectorAll("nav a").forEach((link) => {
   });
 });
 
-// Contact form handler
-const form = document.getElementById("contactForm");
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("📩 Message sent successfully! I’ll get back to you soon.");
-    form.reset();
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section, #home");
   const navLinks = document.querySelectorAll(".nav-btn");
@@ -127,4 +117,34 @@ function toggleProjects() {
 
   expanded = !expanded;
   toggleText.textContent = expanded ? "See Less" : "See All";
+}
+
+const form = document.getElementById("contactForm");
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert("📩 Message sent successfully! I’ll get back to you soon.");
+        form.reset();
+      } else {
+        alert(result.error || "Failed to send message.");
+      }
+    } catch (err) {
+      alert("Failed to send message. Please try again.");
+      console.error(err);
+    }
+  });
 }
