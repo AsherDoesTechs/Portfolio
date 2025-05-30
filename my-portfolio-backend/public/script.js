@@ -1,3 +1,17 @@
+function downloadCV() {
+  const fileUrl = "/public/Asher_Basco_M_CV.pdf";
+  const a = document.createElement("a");
+  a.href = fileUrl;
+  a.download = "Asher_Basco_M_CV.pdf";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+closeModalBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
 // Smooth scroll for nav links
 document.querySelectorAll("nav a").forEach((link) => {
   link.addEventListener("click", (e) => {
@@ -9,7 +23,6 @@ document.querySelectorAll("nav a").forEach((link) => {
     }
   });
 });
-
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section, #home");
   const navLinks = document.querySelectorAll(".nav-btn");
@@ -119,32 +132,46 @@ function toggleProjects() {
   toggleText.textContent = expanded ? "See Less" : "See All";
 }
 
-const form = document.getElementById("contactForm");
-if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+const form = document.querySelector("form"); // select the only form on the page
+const modal = document.getElementById("successModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch("/api/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+  // Access inputs by name
+  const name = form.elements["name"].value.trim();
+  const email = form.elements["email"].value.trim();
+  const message = form.elements["message"].value.trim();
 
-      const result = await res.json();
+  if (!name || !email || !message) {
+    alert("Please fill all the fields.");
+    return;
+  }
 
-      if (result.success) {
-        alert("📩 Message sent successfully! I’ll get back to you soon.");
-        form.reset();
-      } else {
-        alert(result.error || "Failed to send message.");
-      }
-    } catch (err) {
-      alert("Failed to send message. Please try again.");
-      console.error(err);
+  try {
+    const response = await fetch("/api/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      modal.classList.remove("hidden");
+      form.reset();
+    } else {
+      alert(data.error || "Something went wrong. Please try again.");
     }
-  });
-}
+  } catch (err) {
+    alert("Failed to send message. Please try again later.");
+    console.error(err);
+  }
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});

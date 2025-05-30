@@ -69,9 +69,9 @@
   </div>
 
   <!-- Download CV Button -->
-  <a 
-  href="/public/Documents/Asher_Basco_M_CV.pdf" 
-  download 
+  <a
+  onclick="downloadCV()"
+  href="/public/Asher_Basco_M_CV.pdf" 
   class="relative px-4 py-2 text-green-400 font-semibold rounded-md border-2 border-green-400 transition duration-300 ease-in-out hover:bg-green-500 hover:text-white group animate-rise-up animate-delay-5"
 >
   <span class="absolute inset-0 rounded-md border-2 border-green-400 opacity-25 group-hover:opacity-0 transition duration-300 pointer-events-none"></span>
@@ -249,15 +249,25 @@
   </div>
 </section>
 
+<!-- Modal -->
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded-lg p-6 max-w-sm text-center">
+    <h3 class="text-xl font-bold mb-4 text-green-600">Message Successfully sent!</h3>
+    <button id="closeModalBtn" class="bg-green-400 px-4 py-2 rounded hover:bg-green-500 transition-all">
+      Close
+    </button>
+  </div>
+</div>
+
 
   <!-- CONTACT Section -->
   <section id="contacts" class="mt-20 text-white bg-[#111] p-4 rounded-lg border border-gray-600">
     <div class="container mx-auto">
       <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
       <form class="grid gap-4 md:grid-cols-2">
-        <input required type="text" placeholder="Full Name" class="p-3 rounded bg-[#111] border border-gray-600 text-white" />
-        <input required type="email" placeholder="Email Address" class="p-3 rounded bg-[#111] border border-gray-600 text-white" />
-        <textarea required placeholder="Your Message" class="md:col-span-2 p-3 rounded bg-[#111] border border-gray-600 text-white" rows="5"></textarea>
+        <input name="name" required type="text" placeholder="Full Name" class="p-3 rounded bg-[#111] border border-gray-600 text-white" />
+        <input name="email" required type="email" placeholder="Email Address" class="p-3 rounded bg-[#111] border border-gray-600 text-white" />
+        <textarea name="message" required placeholder="Your Message" class="md:col-span-2 p-3 rounded bg-[#111] border border-gray-600 text-white" rows="5"></textarea>
         <button type="submit" class="md:col-span-2 bg-green-400 text-black font-semibold py-2 rounded hover:bg-green-500 transition-all">
           Send Message
         </button>
