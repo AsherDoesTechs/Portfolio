@@ -120,3 +120,19 @@ fetch("http://localhost:5000/api/contact", {
 })
   .then((res) => res.json())
   .then((data) => console.log(data));
+
+let expanded = false;
+
+function toggleProjects() {
+  const hiddenProjects = document.querySelectorAll(
+    "#project-list .project-box.hidden"
+  );
+  const toggleText = document.querySelector('span[onclick="toggleProjects()"]');
+
+  hiddenProjects.forEach((box) => {
+    box.classList.toggle("hidden");
+  });
+
+  expanded = !expanded;
+  toggleText.textContent = expanded ? "See Less" : "See All";
+}
